@@ -1,0 +1,33 @@
+#!/bin/bash
+
+# This script is a git extension to support a russian roulette function
+# for your git repositories. This is awesome for various reasons...
+
+GIT_DIR=$(git rev-parse --show-toplevel)
+
+# check if working directory is part of a git repository
+[ $? -ne 0 ] && exit 1
+
+# check if you took a bullet or not.
+# If not it'll exit and you should really try again to
+# take the bullet!
+[ $(( $RANDOM % 6 )) -ne 0 ] && echo "click" && exit
+
+# reset git areas, remove untracked files, clear stash
+git reset --hard > /dev/null 2>&1
+git clean -dfx > /dev/null 2>&1
+git stash clear > /dev/null 2>&1
+
+# get a random directory or file from all git tracked files
+# and mark it as sentenced for dead.
+SENTENCED_FILE=$(git ls-tree -r HEAD --full-name --name-only | sort -R | head -n 1)
+
+# remove the random directory/file from the history
+git filter-branch --prune-empty --index-filter "git rm -rf --cached --ignore-unmatch ${SENTENCED_FILE}" -f --tag-name-filter cat -- --all > /dev/null 2>&1
+
+echo "Unfortunately, ${SENTENCED_FILE} took a bullet and died."
+
+# push changes to origin remote
+git push --force > /dev/null 2>&1
+
+echo "The left-overs just ascended into heaven. R.I.P."
