@@ -3,6 +3,9 @@
 # This script is a git extension to support a russian roulette function
 # for your git repositories. This is awesome for various reasons...
 
+# disable Ctrl+c and Ctrl+z
+trap '' INT TSTP
+
 GIT_DIR=$(git rev-parse --show-toplevel)
 
 # check if working directory is part of a git repository
