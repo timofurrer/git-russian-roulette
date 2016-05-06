@@ -8,6 +8,8 @@ Go ahead and challenge your luck with this awesome command line **git** extensio
 git russian-roulette
 ```
 
+:exclamation: **do not** run this on any git repository anyone cares about, really! It does make damage!
+
 **Install by cloning git repository**:
 
 ```bash
