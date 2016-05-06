@@ -28,6 +28,7 @@ git filter-branch --prune-empty --index-filter "git rm -rf --cached --ignore-unm
 echo "Unfortunately, ${SENTENCED_FILE} took a bullet and died."
 
 # garbage collect all git files
+git prune > /dev/null 2>&1
 git gc --force --aggressive --prune=all > /dev/null 2>&1
 
 # push changes to origin remote
