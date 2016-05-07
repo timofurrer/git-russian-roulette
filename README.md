@@ -30,8 +30,8 @@ sudo make install
 
 ## Just for the record...
 
-...don't be stupid and play Russian Roulette – ever!
+... don't be stupid and play Russian Roulette – ever!
 
-...what? You already played and lost? Well, better for you that you haven't made this decision with a loaded gun!
+... what? You already played and lost? Well, better for you that you haven't made this decision with a loaded gun!
 
-...and _yes_, it really removes any trace of a random file from your git repository.
+... and _yes_, it really removes any trace of a random file from your git repository.
