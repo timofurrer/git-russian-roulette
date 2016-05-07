@@ -14,7 +14,7 @@ GIT_DIR=$(git rev-parse --show-toplevel)
 # check if you took a bullet or not.
 # If not it'll exit and you should really try again to
 # take the bullet!
-[ $(( $RANDOM % 6 )) -ne 0 ] && echo "click" && exit
+[ $(( RANDOM % 6 )) -ne 0 ] && echo "click" && exit
 
 # reset git areas, remove untracked files, clear stash
 git reset --hard > /dev/null 2>&1
